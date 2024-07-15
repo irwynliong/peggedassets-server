@@ -1,17 +1,17 @@
 const sdk = require("@defillama/sdk");
 import { sumSingleBalance } from "../helper/generalUtil";
-import { bridgedSupply, getApi, } from "../helper/getSupply";
+import { bridgedSupply, getApi } from "../helper/getSupply";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances, ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import {
   getTotalSupply as tronGetTotalSupply, // NOTE THIS DEPENDENCY
 } from "../helper/tron";
 import { call as nearCall } from "../llama-helper/near";
 import { ChainApi } from "@defillama/sdk";
-
 
 const chainContracts: ChainContracts = {
   ethereum: {
@@ -63,13 +63,25 @@ Sora: 0x006d336effe921106f7817e133686bbc4258a4e0d6fed3a9294d8a8b27312cee, don't 
 
 function chainMinted(chain: string) {
   return async function (_api: ChainApi) {
-    const api = await getApi(chain, _api)
+    const api = await getApi(chain, _api);
     let balances = {} as Balances;
-    const issued = await api.multiCall({ abi: "erc20:totalSupply", calls: chainContracts[chain].issued })
-    const decimals = await api.multiCall({ abi: "erc20:decimals", calls: chainContracts[chain].issued })
+    const issued = await api.multiCall({
+      abi: "erc20:totalSupply",
+      calls: chainContracts[chain].issued,
+    });
+    const decimals = await api.multiCall({
+      abi: "erc20:decimals",
+      calls: chainContracts[chain].issued,
+    });
 
     for (let i = 0; i < issued.length; i++)
-      sumSingleBalance(balances, "peggedUSD", issued[i] / 10 ** decimals[i], "issued", false);
+      sumSingleBalance(
+        balances,
+        "peggedUSD",
+        issued[i] / 10 ** decimals[i],
+        "issued",
+        false
+      );
 
     return balances;
   };

@@ -1,4 +1,3 @@
-
 const chainContracts = {
   bsc: {
     issued: ["0x0c6Ed1E73BA73B8441868538E210ebD5DD240FA0"],

@@ -348,14 +348,17 @@ export const chainContracts: ChainContracts = {
   },
   iotex: {
     bridgeOnETH: ["0xc2e0f31d739cb3153ba5760a203b3bd7c27f0d7a"],
-    bridgedFromETH: ["0xcdf79194c6c285077a58da47641d4dbe51f63542", "0x3B2bf2b523f54C4E454F08Aa286D03115aFF326c"],
+    bridgedFromETH: [
+      "0xcdf79194c6c285077a58da47641d4dbe51f63542",
+      "0x3B2bf2b523f54C4E454F08Aa286D03115aFF326c",
+    ],
   },
   imx: {
     //issued: ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
     bridgeOnETH: ["0xBa5E35E26Ae59c7aea6F029B68c6460De2d13eB6"],
     bridgedFromETH: [
       "0x6de8aCC0D406837030CE4dd28e7c08C5a96a30d2", //maybe native bridge?
-      "0xEB466342C4d449BC9f53A865D5Cb90586f405215" //axelar
-      ],
+      "0xEB466342C4d449BC9f53A865D5Cb90586f405215", //axelar
+    ],
   },
 };

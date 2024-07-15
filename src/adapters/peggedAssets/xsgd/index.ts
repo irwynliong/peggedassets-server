@@ -5,9 +5,9 @@ import { bridgedSupply } from "../helper/getSupply";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances, ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
-
 
 const chainContracts: ChainContracts = {
   ethereum: {
@@ -21,15 +21,23 @@ const chainContracts: ChainContracts = {
   },
 };
 async function zilliqaMinted() {
-  const { data: { result } } = await axios.post('https://api.zilliqa.com/', {
-    method: 'GetSmartContractState',
-    params: ['0x173ca6770aa56eb00511dac8e6e13b3d7f16a5a5'],
+  const {
+    data: { result },
+  } = await axios.post("https://api.zilliqa.com/", {
+    method: "GetSmartContractState",
+    params: ["0x173ca6770aa56eb00511dac8e6e13b3d7f16a5a5"],
     id: 1,
-    jsonrpc: '2.0'
-  })
+    jsonrpc: "2.0",
+  });
   let balances = {} as Balances;
-  sumSingleBalance(balances, "peggedSGD", result.total_supply / 1e6, "issued", false);
-  return balances
+  sumSingleBalance(
+    balances,
+    "peggedSGD",
+    result.total_supply / 1e6,
+    "issued",
+    false
+  );
+  return balances;
 }
 
 async function chainMinted(chain: string, decimals: number) {

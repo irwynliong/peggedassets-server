@@ -40,7 +40,11 @@ async function getPeggedAsset(
   for (let i = 0; i < maxRetries; i++) {
     try {
       peggedBalances[chain] = peggedBalances[chain] || {};
-      const balance = (await issuanceFunction(api, ethBlock, chainBlocks)) as PeggedTokenBalance;
+      const balance = (await issuanceFunction(
+        api,
+        ethBlock,
+        chainBlocks
+      )) as PeggedTokenBalance;
       if (balance && Object.keys(balance).length === 0) {
         peggedBalances[chain][issuanceType] = { [pegType]: 0 };
         return;

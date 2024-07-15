@@ -9,7 +9,6 @@ import {
 const axios = require("axios");
 const retry = require("async-retry");
 
-
 const chainContracts: ChainContracts = {
   acala: {
     issued: ["0x0000000000000000000100000000000000000001"],
@@ -59,8 +58,7 @@ async function karuraMinted(address: string, decimals: number) {
 
 const adapter: PeggedIssuanceAdapter = {
   // hacked, inflated circulating, not trading acalaMinted(chainContracts.acala.issued[0], 12),
-  acala: {
-  },
+  acala: {},
   karura: {
     minted: karuraMinted(chainContracts.karura.issued[0], 12),
   },

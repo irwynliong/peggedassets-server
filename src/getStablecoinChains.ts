@@ -5,23 +5,31 @@ import {
   getLastRecord,
   hourlyPeggedBalances,
 } from "./peggedAssets/utils/getLastRecord";
-import { getChainDisplayName, chainCoingeckoIds, nonChains } from "./utils/normalizeChain";
+import {
+  getChainDisplayName,
+  chainCoingeckoIds,
+  nonChains,
+} from "./utils/normalizeChain";
 import { fetchPrices } from "./utils/fetchPrices";
 
 type balance = { [token: string]: number };
 
-export async function craftStablecoinChainsResponse({ peggedPrices }: { peggedPrices?: any } = {}) {
+export async function craftStablecoinChainsResponse({
+  peggedPrices,
+}: { peggedPrices?: any } = {}) {
   const chainCirculating = {} as { [chain: string]: balance };
-  const chainTvlData = await fetch('https://api.llama.fi/v2/chains').then((res) => res.json());
+  const chainTvlData = await fetch("https://api.llama.fi/v2/chains").then(
+    (res) => res.json()
+  );
   chainTvlData.forEach((data: any) => {
-    const {name, tvl } = data
+    const { name, tvl } = data;
     if (!chainCoingeckoIds[name]) {
-      chainCoingeckoIds[name] = data
-      chainCoingeckoIds[name].symbol = data.tokenSymbol
-    };
-    (chainCoingeckoIds[name] as any).tvl = tvl
-  })
-  
+      chainCoingeckoIds[name] = data;
+      chainCoingeckoIds[name].symbol = data.tokenSymbol;
+    }
+    (chainCoingeckoIds[name] as any).tvl = tvl;
+  });
+
   let prices = await fetchPrices(peggedPrices);
 
   await Promise.all(
@@ -47,7 +55,8 @@ export async function craftStablecoinChainsResponse({ peggedPrices }: { peggedPr
         let circulating = issuances.circulating;
         chainCirculating[chainName][pegType] =
           chainCirculating[chainName][pegType] ?? 0;
-        chainCirculating[chainName][pegType] += (circulating?.[pegType] ?? 0) * price;
+        chainCirculating[chainName][pegType] +=
+          (circulating?.[pegType] ?? 0) * price;
         chainsAdded += 1;
       });
     })

@@ -12,7 +12,7 @@ const chainContracts = {
   bsc: {
     issued: ["0xde7d1ce109236b12809c45b23d22f30dba0ef424"],
   },
-}
+};
 
 import { addChainExports } from "../helper/getSupply";
 const adapter = addChainExports(chainContracts);

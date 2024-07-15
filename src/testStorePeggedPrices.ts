@@ -1,5 +1,7 @@
 import peggedAssets from "./peggedData/peggedData";
-import getCurrentPeggedPrice, { getPrices } from "./adapters/peggedAssets/prices";
+import getCurrentPeggedPrice, {
+  getPrices,
+} from "./adapters/peggedAssets/prices";
 
 type Prices = {
   [coinGeckoId: string]: Number | null;
@@ -20,14 +22,14 @@ const test = async () => {
 };
 
 const test2 = async () => {
-  const tokens = peggedAssets.map((pegged) =>pegged.gecko_id);
+  const tokens = peggedAssets.map((pegged) => pegged.gecko_id);
   await getPrices(peggedAssets).then((res) => {
     tokens.forEach((token) => {
       if (!res[token]) {
         console.log(token, "not found");
       }
-    })
-  })
+    });
+  });
   return;
 };
 

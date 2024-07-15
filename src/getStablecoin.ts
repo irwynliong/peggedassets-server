@@ -30,7 +30,7 @@ export async function craftProtocolResponse(
   peggedID: string | undefined,
   useNewChainNames: boolean,
   useHourlyData: boolean,
-  { peggedPrices }: { peggedPrices?: any; } = {}
+  { peggedPrices }: { peggedPrices?: any } = {}
 ) {
   let prices = await fetchPrices(peggedPrices);
 
@@ -81,12 +81,12 @@ export async function craftProtocolResponse(
       ?.map((item) =>
         typeof item[normalizedChain] === "object"
           ? {
-            date: item.SK,
-            circulating: item[normalizedChain].circulating ?? 0,
-            minted: item[normalizedChain].minted ?? 0,
-            unreleased: item[normalizedChain].unreleased ?? 0,
-            bridgedTo: item[normalizedChain].bridgedTo ?? 0,
-          }
+              date: item.SK,
+              circulating: item[normalizedChain].circulating ?? 0,
+              minted: item[normalizedChain].minted ?? 0,
+              unreleased: item[normalizedChain].unreleased ?? 0,
+              bridgedTo: item[normalizedChain].bridgedTo ?? 0,
+            }
           : { circulating: undefined }
       )
       .filter((item) => item.circulating !== undefined);

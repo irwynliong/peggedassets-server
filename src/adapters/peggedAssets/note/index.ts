@@ -3,9 +3,9 @@ import { sumSingleBalance } from "../helper/generalUtil";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
-
 
 const chainContracts: ChainContracts = {
   canto: {

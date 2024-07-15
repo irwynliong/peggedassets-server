@@ -1,4 +1,3 @@
-
 const chainContracts = {
   ethereum: {
     issued: ["0xd71ecff9342a5ced620049e616c5035f1db98620"],
@@ -9,5 +8,7 @@ const chainContracts = {
 };
 
 import { addChainExports } from "../helper/getSupply";
-const adapter = addChainExports(chainContracts, undefined, { pegType: "peggedEUR" });
+const adapter = addChainExports(chainContracts, undefined, {
+  pegType: "peggedEUR",
+});
 export default adapter;

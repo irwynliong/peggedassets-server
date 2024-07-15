@@ -2,10 +2,10 @@ import { sumSingleBalance } from "../helper/generalUtil";
 import {
   ChainBlocks,
   Balances,
-  PeggedIssuanceAdapter,  ChainContracts,
+  PeggedIssuanceAdapter,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { getObject } from "../helper/sui";
-
 
 const chainContracts: ChainContracts = {
   sui: {

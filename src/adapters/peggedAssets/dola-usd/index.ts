@@ -1,7 +1,5 @@
 import { addChainExports } from "../helper/getSupply";
-import {
-  PeggedIssuanceAdapter,  ChainContracts,
-} from "../peggedAsset.type";
+import { PeggedIssuanceAdapter, ChainContracts } from "../peggedAsset.type";
 
 const chainContracts = {
   ethereum: {

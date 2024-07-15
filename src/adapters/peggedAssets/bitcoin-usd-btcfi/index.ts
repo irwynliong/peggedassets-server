@@ -1,6 +1,7 @@
 const chainContracts = {
   bfc: {
-    issued: ["0x6906Ccda405926FC3f04240187dd4fAd5DF6d555"], pegType: 'peggedVAR'
+    issued: ["0x6906Ccda405926FC3f04240187dd4fAd5DF6d555"],
+    pegType: "peggedVAR",
   },
 };
 

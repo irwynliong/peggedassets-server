@@ -70,10 +70,13 @@ Caduceus: 0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c is multichain, don't have p
 
 async function chainMinted(chain: string, decimals: number) {
   return async function (_api: ChainApi) {
-    const api = await getApi(chain, _api)
+    const api = await getApi(chain, _api);
     let balances = {} as Balances;
     for (let issued of chainContracts[chain].issued) {
-      const totalSupply = await api.call({ abi: "erc20:totalSupply", target: issued, })
+      const totalSupply = await api.call({
+        abi: "erc20:totalSupply",
+        target: issued,
+      });
       sumSingleBalance(
         balances,
         "peggedUSD",
@@ -88,10 +91,14 @@ async function chainMinted(chain: string, decimals: number) {
 
 async function chainUnreleased(chain: string, decimals: number, owner: string) {
   return async function (_api: ChainApi) {
-    const api = await getApi(chain, _api)
+    const api = await getApi(chain, _api);
     let balances = {} as Balances;
     for (let issued of chainContracts[chain].issued) {
-      const reserve = await api.call({ target: issued, params: owner, abi: "erc20:balanceOf", })
+      const reserve = await api.call({
+        target: issued,
+        params: owner,
+        abi: "erc20:balanceOf",
+      });
       sumSingleBalance(balances, "peggedUSD", reserve / 10 ** decimals);
     }
     return balances;
@@ -103,12 +110,14 @@ async function bscBridgedFromTron(
   ethUSDTAddress: string
 ) {
   return async function (_api: ChainApi) {
-    const api = await getApi('bsc', _api)
+    const api = await getApi("bsc", _api);
     let balances = {} as Balances;
-    const totalSupply = await api.call({
-      abi: "erc20:totalSupply",
-      target: bscUSDTAddress,
-    }) / 10 ** 18;
+    const totalSupply =
+      (await api.call({
+        abi: "erc20:totalSupply",
+        target: bscUSDTAddress,
+      })) /
+      10 ** 18;
     const bridgedFromETH =
       (
         await sdk.api.erc20.balanceOf({
@@ -185,13 +194,7 @@ async function tonMinted() {
         )
     );
     const issued = res.data.jetton_masters[0].total_supply;
-    sumSingleBalance(
-      balances,
-      "peggedUSD",
-      (issued ) / 10 ** 6,
-      "issued",
-      false
-    );
+    sumSingleBalance(balances, "peggedUSD", issued / 10 ** 6, "issued", false);
     return balances;
   };
 }

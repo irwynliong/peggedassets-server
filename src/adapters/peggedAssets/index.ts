@@ -189,8 +189,8 @@ import isc from "./international-stable-currency";
 import usc from "./orby-network-usc-stablecoin";
 import fxbtcusd from "./f-x-btc-usd";
 import bitusd from "./bitsmiley-bitusd";
-import usda from "./angle-usd"
-import usc2  from "./usc-2";
+import usda from "./angle-usd";
+import usc2 from "./usc-2";
 import ckusdc from "./ckusdc";
 import usd0 from "./usual-usd";
 import classicusd from "./classic-usd";
@@ -397,5 +397,5 @@ export default {
   "classic-usd": classicusd,
   "resolv-usr": usr,
   "stable-jack-ausd": ausd,
-  "celo-real-creal": creal
+  "celo-real-creal": creal,
 };

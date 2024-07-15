@@ -30,12 +30,10 @@ async function getTVLOfRecordClosestToTimestamp(
 export async function craftProtocolsResponse(
   useNewChainNames: boolean,
   getPrices: boolean,
-  { peggedPrices }: { peggedPrices?: any; } = {}
+  { peggedPrices }: { peggedPrices?: any } = {}
 ) {
-
-  let prices = {} as any
-  if (getPrices)
-    prices = await fetchPrices(peggedPrices);
+  let prices = {} as any;
+  if (getPrices) prices = await fetchPrices(peggedPrices);
 
   const response = (
     await Promise.all(

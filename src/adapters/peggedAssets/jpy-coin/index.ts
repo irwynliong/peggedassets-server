@@ -30,8 +30,10 @@ const chainContracts = {
     issued: ["0x431D5dfF03120AFA4bDf332c61A6e1766eF37BDB"],
     unreleased: ["0xa312f84607Efb1D200C313859156ccC3500189b6"],
   },
-}
+};
 
 import { addChainExports } from "../helper/getSupply";
-const adapter = addChainExports(chainContracts, undefined, { pegType: "peggedJPY", });
+const adapter = addChainExports(chainContracts, undefined, {
+  pegType: "peggedJPY",
+});
 export default adapter;

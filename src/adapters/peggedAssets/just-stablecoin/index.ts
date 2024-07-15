@@ -3,13 +3,13 @@ import { sumSingleBalance } from "../helper/generalUtil";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import {
   getTokenBalance as tronGetTokenBalance,
   getTotalSupply as tronGetTotalSupply, // NOTE THIS DEPENDENCY
 } from "../helper/tron";
-
 
 const locks = [] as ((value: unknown) => void)[];
 function getCoingeckoLock() {

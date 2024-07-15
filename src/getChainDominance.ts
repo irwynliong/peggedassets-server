@@ -30,7 +30,7 @@ export async function craftChainDominanceResponse(chain: string | undefined) {
       };
     };
   };
-  
+
   if (chain === undefined) {
     return errorResponse({
       message: "Must include chain as path parameter.",
@@ -66,7 +66,7 @@ export async function craftChainDominanceResponse(chain: string | undefined) {
       timestamp,
       getTimestampAtStartOfDay(peggedBalance?.lastBalance?.SK ?? 0)
     );
-  })
+  });
 
   lastPeggedBalances.map((peggedBalance) => {
     if (peggedBalance === undefined) {
@@ -130,7 +130,7 @@ export async function craftChainDominanceResponse(chain: string | undefined) {
     } else {
       console.log("itemBalance is invalid", itemBalance, pegged, timestamp);
     }
-  })
+  });
 
   const response = Object.entries(sumDailyBalances).map(
     ([timestamp, balance]) => ({

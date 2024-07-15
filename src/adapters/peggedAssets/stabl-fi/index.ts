@@ -5,7 +5,7 @@ const chainContracts = {
       "0x5D066D022EDE10eFa2717eD3D79f22F949F8C175",
     ],
   },
-}
+};
 
 import { addChainExports } from "../helper/getSupply";
 const adapter = addChainExports(chainContracts);

@@ -18,7 +18,6 @@ import {
 const axios = require("axios");
 const retry = require("async-retry");
 
-
 const chainContracts: ChainContracts = {
   bsc: {
     issued: ["0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"],

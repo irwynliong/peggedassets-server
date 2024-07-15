@@ -4,10 +4,10 @@ import { solanaMintedOrBridged } from "../helper/getSupply";
 import {
   Balances,
   ChainBlocks,
-  PeggedIssuanceAdapter,  ChainContracts,
+  PeggedIssuanceAdapter,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { getTotalSupply as tezosGetTotalSupply } from "../helper/tezos";
-
 
 const chainContracts: ChainContracts = {
   ethereum: {

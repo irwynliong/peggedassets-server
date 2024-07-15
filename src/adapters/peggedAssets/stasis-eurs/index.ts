@@ -8,12 +8,12 @@ import {
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { getTotalSupply as stellarGetTotalSupply } from "../helper/stellar";
 const axios = require("axios");
 const retry = require("async-retry");
-
 
 const chainContracts: ChainContracts = {
   ethereum: {
@@ -163,10 +163,10 @@ async function stellarMinted(assetID: string) {
     _chainBlocks: ChainBlocks
   ) {
     let balances = {} as Balances;
-    const supply = await stellarGetTotalSupply(assetID)
-    sumSingleBalance(balances, "peggedEUR", supply, "issued", false)
+    const supply = await stellarGetTotalSupply(assetID);
+    sumSingleBalance(balances, "peggedEUR", supply, "issued", false);
     return balances;
-  }
+  };
 }
 
 const adapter: PeggedIssuanceAdapter = {

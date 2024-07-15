@@ -8,9 +8,9 @@ import {
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
-
 
 const chainContracts: ChainContracts = {
   ethereum: {
@@ -65,7 +65,7 @@ async function ontologyBridged() {
     _ethBlock: number,
     _chainBlocks: ChainBlocks
   ) {
-    return {}
+    return {};
     /* 
     let balances = {} as Balances;
     const polyDAIAddress = chainContracts.ontology.bridgedFromETH[0];
