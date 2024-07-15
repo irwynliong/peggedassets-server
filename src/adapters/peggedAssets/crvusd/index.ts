@@ -4,9 +4,9 @@ import { supplyInEthereumBridge } from "../helper/getSupply";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
-
 
 const chainContracts: ChainContracts = {
   ethereum: {

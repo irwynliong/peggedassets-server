@@ -3,11 +3,11 @@ import { sumSingleBalance } from "../helper/generalUtil";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { call } from "../llama-helper/near";
 import { bridgedSupply } from "../helper/getSupply";
-
 
 const chainContracts: ChainContracts = {
   near: {

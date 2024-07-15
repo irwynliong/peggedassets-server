@@ -6,7 +6,7 @@ import { historicalRates } from "./peggedAssets/utils/getLastRecord";
 import { getTimestampAtStartOfDay } from "./utils/date";
 import { getHistoricalValues } from "./utils/shared/dynamodb";
 import { secondsInWeek } from "./utils/date";
-import * as sdk from '@defillama/sdk'
+import * as sdk from "@defillama/sdk";
 
 export const handler = async (_event: any) => {
   // store daily db entry
@@ -37,8 +37,8 @@ export const handler = async (_event: any) => {
           metadata: {
             application: "pegged-assets",
             function: "storeRates",
-          }
-        })
+          },
+        });
         continue;
       }
     }

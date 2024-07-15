@@ -1,7 +1,5 @@
 const sdk = require("@defillama/sdk");
-import {
-  sumSingleBalance,
-} from "../helper/generalUtil";
+import { sumSingleBalance } from "../helper/generalUtil";
 import {
   bridgedSupply,
   solanaMintedOrBridged,
@@ -17,7 +15,6 @@ import {
 } from "../peggedAsset.type";
 const axios = require("axios");
 const retry = require("async-retry");
-
 
 const chainContracts: any = {
   ethereum: {

@@ -4,7 +4,8 @@ import { sumSingleBalance } from "../helper/generalUtil";
 import {
   Balances,
   ChainBlocks,
-  PeggedIssuanceAdapter,  ChainContracts,
+  PeggedIssuanceAdapter,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { starknetTotalSupplyAbi, starknetBalanceOfAbi } from "./abi";
 

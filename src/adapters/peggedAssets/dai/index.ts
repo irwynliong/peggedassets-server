@@ -20,7 +20,8 @@ import {
   ChainBlocks,
   PeggedIssuanceAdapter,
   Balances,
-  PeggedAssetType,  ChainContracts,
+  PeggedAssetType,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { mixinSupply } from "../helper/mixin";
 import { chainContracts } from "./config";
@@ -423,7 +424,7 @@ const adapter: PeggedIssuanceAdapter = {
       chainContracts.dogechain.bridgedFromETH
     ),
   }, */
-  
+
   thundercore: {
     ethereum: bridgedSupply(
       "thundercore",

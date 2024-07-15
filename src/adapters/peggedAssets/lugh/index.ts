@@ -3,13 +3,13 @@ import { sumSingleBalance } from "../helper/generalUtil";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import {
   getTotalSupply as tezosGetTotalSupply,
   getBalance as tezosGetBalance,
 } from "../helper/tezos";
-
 
 const chainContracts: ChainContracts = {
   tezos: {

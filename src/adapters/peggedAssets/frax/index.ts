@@ -10,10 +10,10 @@ import {
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import { call as nearCall } from "../llama-helper/near";
-
 
 // all multichain
 const chainContracts: ChainContracts = {

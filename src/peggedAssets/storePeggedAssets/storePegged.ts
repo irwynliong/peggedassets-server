@@ -20,7 +20,7 @@ const timeout = (prom: any, time: number, peggedID: string) =>
     }
   );
 
-const stubFn = () => ({})
+const stubFn = () => ({});
 
 async function iteratePeggedAssets(peggedIndexes: number[]) {
   const timestamp = getCurrentUnixTimestamp();
@@ -31,12 +31,13 @@ async function iteratePeggedAssets(peggedIndexes: number[]) {
       .map((idx) => peggedAssets[idx])
       .map(async (peggedAsset) => {
         const adapterModule = importAdapter(peggedAsset);
-        if (!adapterModule) console.log("No adapter found for", peggedAsset.name, peggedAsset);
+        if (!adapterModule)
+          console.log("No adapter found for", peggedAsset.name, peggedAsset);
 
         Object.values(adapterModule).forEach((obj: any) => {
-          if (!obj.minted) obj.minted = stubFn
-          if (!obj.unreleased) obj.unreleased = stubFn
-        })
+          if (!obj.minted) obj.minted = stubFn;
+          if (!obj.unreleased) obj.unreleased = stubFn;
+        });
         // times out after 60 seconds
         return await timeout(
           storePeggedAsset(

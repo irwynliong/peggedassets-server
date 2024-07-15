@@ -1,6 +1,5 @@
 const sdk = require("@defillama/sdk");
 import { sumSingleBalance } from "../helper/generalUtil";
-import { bridgedSupply } from "../helper/getSupply";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
@@ -9,14 +8,13 @@ import {
 } from "../peggedAsset.type";
 
 const chainContracts: ChainContracts = {
-  rsk: {
-    issued: ["0xe700691dA7b9851F2F35f8b8182c69c53CcaD9Db"],
-  },
   ethereum: {
-    bridgedFromRSK: ["0x69f6d4d4813f8e2e618dae7572e04b6d5329e207"],
+    issued: ["0xb6667b04Cb61Aa16B59617f90FFA068722Cf21dA"],
+  },
+  polygon: {
+    issued: ["0xA04C86c411320444d4A99d44082e057772E8cF96"],
   },
 };
-
 async function chainMinted(chain: string, decimals: number) {
   return async function (
     _timestamp: number,
@@ -46,11 +44,11 @@ async function chainMinted(chain: string, decimals: number) {
 }
 
 const adapter: PeggedIssuanceAdapter = {
-  rsk: {
-    minted: chainMinted("rsk", 18),
-  },
   ethereum: {
-    rsk: bridgedSupply("ethereum", 18, chainContracts.ethereum.bridgedFromRSK),
+    minted: chainMinted("ethereum", 6),
+  },
+  polygon: {
+    minted: chainMinted("polygon", 6),
   },
 };
 

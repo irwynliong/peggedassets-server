@@ -4,7 +4,8 @@ import { bridgedSupply } from "../helper/getSupply";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 const axios = require("axios");
 const retry = require("async-retry");
@@ -118,8 +119,8 @@ const adapter: PeggedIssuanceAdapter = {
     minted: chainMinted("avax", 6),
   },
   stellar: {
-    minted: circleAPIChainMinted("XLM")
-  }
+    minted: circleAPIChainMinted("XLM"),
+  },
 };
 
 export default adapter;

@@ -58,8 +58,7 @@ async function totalDebt() {
 }
 
 const adapter: PeggedIssuanceAdapter = {
-  solana: {
-  },
+  solana: {},
 };
 
 export default adapter;

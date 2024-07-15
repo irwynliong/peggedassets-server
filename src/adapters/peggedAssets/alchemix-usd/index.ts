@@ -1,7 +1,5 @@
-import { addChainExports, } from "../helper/getSupply";
-import {
-  ChainContracts,
-} from "../peggedAsset.type";
+import { addChainExports } from "../helper/getSupply";
+import { ChainContracts } from "../peggedAsset.type";
 
 const chainContracts: ChainContracts = {
   ethereum: {

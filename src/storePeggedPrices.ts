@@ -11,7 +11,7 @@ import {
 } from "./peggedAssets/utils/getLastRecord";
 import { bridgeInfo } from "./peggedData/bridgeData";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import * as sdk from '@defillama/sdk'
+import * as sdk from "@defillama/sdk";
 
 type Prices = {
   [coinGeckoId: string]: number | null;
@@ -51,8 +51,8 @@ const handler = async (_event: any) => {
           metadata: {
             application: "pegged-assets",
             function: "storePeggedPrices",
-          }
-        })
+          },
+        });
         throw e;
       } else {
         console.error(e);

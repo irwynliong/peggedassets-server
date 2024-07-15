@@ -1,7 +1,4 @@
-import {
-  PeggedIssuanceAdapter,
-  Balances,
-} from "../peggedAsset.type";
+import { PeggedIssuanceAdapter, Balances } from "../peggedAsset.type";
 import { sumSingleBalance } from "../helper/generalUtil";
 import { ChainApi } from "@defillama/sdk";
 
@@ -18,8 +15,17 @@ const chainContracts = {
 async function ethereumMinted() {
   return async function (api: ChainApi) {
     let balances = {} as Balances;
-    const totalSupply = await api.call({ abi: "erc20:totalSupply", target: chainContracts.ethereum.issued[0], })
-    sumSingleBalance(balances, "peggedUSD", totalSupply / 1e18, "issued", false);
+    const totalSupply = await api.call({
+      abi: "erc20:totalSupply",
+      target: chainContracts.ethereum.issued[0],
+    });
+    sumSingleBalance(
+      balances,
+      "peggedUSD",
+      totalSupply / 1e18,
+      "issued",
+      false
+    );
     return balances;
   };
 }
@@ -27,9 +33,12 @@ async function ethereumMinted() {
 async function ethereumUnreleased() {
   return async function (api: ChainApi) {
     let balances = {} as Balances;
-    const debts = await api.multiCall({  abi: 'uint256:debtToPay', calls: chainContracts.ethereum.pcvContracts})
-    for (const debt of debts) 
-      sumSingleBalance(balances, "peggedUSD", debt / 1e18)
+    const debts = await api.multiCall({
+      abi: "uint256:debtToPay",
+      calls: chainContracts.ethereum.pcvContracts,
+    });
+    for (const debt of debts)
+      sumSingleBalance(balances, "peggedUSD", debt / 1e18);
     return balances;
   };
 }

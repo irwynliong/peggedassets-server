@@ -23,7 +23,8 @@ import { call as nearCall } from "../llama-helper/near";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 import {
   getTotalSupply as tronGetTotalSupply, // NOTE THIS DEPENDENCY
@@ -126,7 +127,12 @@ async function solanaUnreleased() {
   };
 }
 
-const getBal = (address:string)=>lookupAccountByID(address).then(r=>r.account.assets.find((t:any)=>t["asset-id"]==31566704).amount / 10 ** 6)
+const getBal = (address: string) =>
+  lookupAccountByID(address).then(
+    (r) =>
+      r.account.assets.find((t: any) => t["asset-id"] == 31566704).amount /
+      10 ** 6
+  );
 async function algorandMinted() {
   // I gave up on trying to use the SDK for this
   return async function (
@@ -140,7 +146,11 @@ async function algorandMinted() {
         await axios.get("https://mainnet-idx.algonode.cloud/v2/assets/31566704")
     );
     const supply = supplyRes?.data?.asset?.params?.total;
-    let balance = (supply / 10 ** 6 - await getBal("2UEQTE5QDNXPI7M3TU44G6SYKLFWLPQO7EBZM7K7MHMQQMFI4QJPLHQFHM"));
+    let balance =
+      supply / 10 ** 6 -
+      (await getBal(
+        "2UEQTE5QDNXPI7M3TU44G6SYKLFWLPQO7EBZM7K7MHMQQMFI4QJPLHQFHM"
+      ));
     sumSingleBalance(balances, "peggedUSD", balance, "issued", false);
     return balances;
   };
@@ -150,9 +160,16 @@ async function algorandUnreleased() {
   return async function () {
     let balances = {} as Balances;
 
-    sumSingleBalance(balances, "peggedUSD", 
-    (await getBal("OSS3CEB3KK2QGVW4DZYMHLDJMJIY7WKFQCPXV7KOZCGF6GPILAARBOGZHM")) + 
-    (await getBal("SO6ZNE255CHM56JNA6SYDAKIMHC266DGM4G47O6N66UT57HZZ7VV6Y2N7Y")));
+    sumSingleBalance(
+      balances,
+      "peggedUSD",
+      (await getBal(
+        "OSS3CEB3KK2QGVW4DZYMHLDJMJIY7WKFQCPXV7KOZCGF6GPILAARBOGZHM"
+      )) +
+        (await getBal(
+          "SO6ZNE255CHM56JNA6SYDAKIMHC266DGM4G47O6N66UT57HZZ7VV6Y2N7Y"
+        ))
+    );
     return balances;
   };
 }
@@ -690,7 +707,7 @@ const adapter: PeggedIssuanceAdapter = {
     ethereum: bridgedSupply("dfk", 18, chainContracts.dfk.bridgedFromETH),
   },
   celo: {
-    minted: chainMinted("celo",6),
+    minted: chainMinted("celo", 6),
     ethereum: sumMultipleBalanceFunctions(
       [
         bridgedSupply("celo", 6, chainContracts.celo.bridgedFromETH6Decimals),
@@ -826,7 +843,7 @@ const adapter: PeggedIssuanceAdapter = {
   },
   pulse: {
     ethereum: bridgedSupply("pulse", 6, chainContracts.pulse.bridgedFromETH),
-  },  
+  },
   imx: {
     ethereum: supplyInEthereumBridge(
       chainContracts.ethereum.issued[0],
@@ -838,7 +855,11 @@ const adapter: PeggedIssuanceAdapter = {
     ethereum: bridgedSupply("iotex", 6, chainContracts.iotex.bridgedFromETH),
   },
   icp: {
-    ethereum: supplyInEthereumBridge('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', '0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80', 6),
+    ethereum: supplyInEthereumBridge(
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "0xb25eA1D493B49a1DeD42aC5B1208cC618f9A9B80",
+      6
+    ),
   },
 };
 

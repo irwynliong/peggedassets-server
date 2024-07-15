@@ -15,24 +15,24 @@ export const normalizedChainReplacements = {
   rootstock: "rsk",
   "terra classic": "terra",
   "nova network": "nova",
-  "godwokenv1": "godwoken_v1",
+  godwokenv1: "godwoken_v1",
   "arbitrum nova": "arbitrum_nova",
   "zksync era": "era",
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
-  "oasys": "oas",
+  oasys: "oas",
   "map relay chain": "map",
-  "pulsechain": "pulse",
-  "opbnb": "op_bnb",
+  pulsechain: "pulse",
+  opbnb: "op_bnb",
   "bifrost network": "bfc",
   "horizen eon": "eon",
-  "bahamut": "ftn",
-  "viction": "tomochain",
-  "bevm": "chainx",
-  "bitnet": "btn",
+  bahamut: "ftn",
+  viction: "tomochain",
+  bevm: "chainx",
+  bitnet: "btn",
   "defichain evm": "defichain_evm",
-  "hydration": "hydradx",
-  "bitlayer": "btr",
+  hydration: "hydradx",
+  bitlayer: "btr",
 } as {
   [chain: string]: string;
 };
@@ -1011,7 +1011,7 @@ export const chainCoingeckoIds = {
     cmcId: "7817",
     categories: ["EVM"],
   },
-  "Bitlayer": {
+  Bitlayer: {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1025,17 +1025,17 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     twitter: "Immutable",
     url: "https://www.immutable.com",
-    chainId: 13371
+    chainId: 13371,
   },
-  "ICP": {
+  ICP: {
     geckoId: "internet-computer",
-    github: ['dfinity'],
+    github: ["dfinity"],
     symbol: "ICP",
     cmcId: "8916",
   },
-  "TON": {
+  TON: {
     geckoId: "the-open-network",
-    github: ['ton-blockchain'],
+    github: ["ton-blockchain"],
     symbol: "TON",
     cmcId: "11419",
     twitter: "ton_blockchain",
@@ -1302,11 +1302,11 @@ export function getChainDisplayName(
     case "btr":
       return "Bitlayer";
     case "imx":
-      return "Immutable zkEVM"
+      return "Immutable zkEVM";
     case "icp":
-      return "ICP"
+      return "ICP";
     case "ton":
-      return "TON"
+      return "TON";
     default:
       return (
         normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1)

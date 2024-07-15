@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
 
-let prices: any
+let prices: any;
 
 export async function fetchPrices(peggedPrices?: any): Promise<any> {
-  if (prices) return prices
+  if (prices) return prices;
   if (peggedPrices) {
-    prices = peggedPrices
+    prices = peggedPrices;
   } else {
     prices = await fetch(
       "https://llama-stablecoins-data.s3.eu-central-1.amazonaws.com/peggedPrices.json"
@@ -15,5 +15,5 @@ export async function fetchPrices(peggedPrices?: any): Promise<any> {
         console.error("Could not fetch pegged prices");
       });
   }
-  return prices ?? {}
+  return prices ?? {};
 }

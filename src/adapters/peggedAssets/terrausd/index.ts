@@ -11,11 +11,11 @@ import {
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances,  ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 const axios = require("axios");
 const retry = require("async-retry");
-
 
 const chainContracts: ChainContracts = {
   ethereum: {
@@ -227,8 +227,8 @@ const adapter: PeggedIssuanceAdapter = {
 // hardcoded value as zero since it is no longer a stablecoin
 Object.keys(adapter).forEach((chain) => {
   Object.keys(adapter[chain]).forEach((key) => {
-    adapter[chain][key] = () => {}
-  })
-})
+    adapter[chain][key] = () => {};
+  });
+});
 
 export default adapter;

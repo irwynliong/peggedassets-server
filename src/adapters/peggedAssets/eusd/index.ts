@@ -1,4 +1,3 @@
-
 const chainContracts = {
   ethereum: {
     issued: ["0x97de57eC338AB5d51557DA3434828C5DbFaDA371"],

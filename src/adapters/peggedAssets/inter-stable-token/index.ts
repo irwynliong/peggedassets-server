@@ -3,11 +3,11 @@ import { osmosisSupply } from "../helper/getSupply";
 import {
   Balances,
   ChainBlocks,
-  PeggedIssuanceAdapter,  ChainContracts,
+  PeggedIssuanceAdapter,
+  ChainContracts,
 } from "../peggedAsset.type";
 const axios = require("axios");
 const retry = require("async-retry");
-
 
 const chainContracts: ChainContracts = {
   osmosis: {

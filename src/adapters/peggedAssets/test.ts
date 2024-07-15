@@ -1,5 +1,4 @@
-
-process.env.SKIP_RPC_CHECK = 'true'
+process.env.SKIP_RPC_CHECK = "true";
 
 require("dotenv").config();
 const path = require("path");
@@ -53,7 +52,7 @@ async function getPeggedAsset(
       ),
     60e3
   );
-  const chainApi = new sdk.ChainApi({ chain })
+  const chainApi = new sdk.ChainApi({ chain });
   const balance = (await issuanceFunction(
     chainApi,
     ethBlock,
@@ -155,7 +154,7 @@ if (process.argv.length < 3) {
 
 const passedFile = path.resolve(process.cwd(), process.argv[2]);
 const dummyFn = () => ({});
-const INTERNAL_CACHE_FILE = 'pegged-assets-cache/sdk-cache.json';
+const INTERNAL_CACHE_FILE = "pegged-assets-cache/sdk-cache.json";
 
 (async () => {
   let adapter = {} as PeggedIssuanceAdapter;
@@ -192,8 +191,8 @@ const INTERNAL_CACHE_FILE = 'pegged-assets-cache/sdk-cache.json';
   }
   let peggedBalances: PeggedAssetIssuance = {};
   let bridgedFromMapping: BridgeMapping = {};
-  
-  await initializeSdkInternalCache()
+
+  await initializeSdkInternalCache();
 
   let peggedBalancesPromises = Object.entries(module).map(
     async ([chain, issuances]) => {
@@ -212,8 +211,7 @@ const INTERNAL_CACHE_FILE = 'pegged-assets-cache/sdk-cache.json';
         );
       } */
 
-      if (!(issuances as any).minted)
-        (issuances as any).minted = dummyFn;
+      if (!(issuances as any).minted) (issuances as any).minted = dummyFn;
       if (!(issuances as any).unreleased)
         (issuances as any).unreleased = dummyFn;
 
@@ -280,7 +278,7 @@ const INTERNAL_CACHE_FILE = 'pegged-assets-cache/sdk-cache.json';
         humanizeNumber(issuance[pegType])
       )
   );
-  await saveSdkInternalCache()
+  await saveSdkInternalCache();
   process.exit(0);
 })();
 
@@ -309,22 +307,23 @@ function handleError(error: string) {
 process.on("unhandledRejection", handleError);
 process.on("uncaughtException", handleError);
 
-
-
-
 async function initializeSdkInternalCache() {
-  let currentCache = await sdk.cache.readCache(INTERNAL_CACHE_FILE)
+  let currentCache = await sdk.cache.readCache(INTERNAL_CACHE_FILE);
   // sdk.log('cache size:', JSON.stringify(currentCache).length, 'chains:', Object.keys(currentCache))
-  const ONE_MONTH = 60 * 60 * 24 * 30
-  if (!currentCache || !currentCache.startTime || (Date.now() / 1000 - currentCache.startTime > ONE_MONTH)) {
+  const ONE_MONTH = 60 * 60 * 24 * 30;
+  if (
+    !currentCache ||
+    !currentCache.startTime ||
+    Date.now() / 1000 - currentCache.startTime > ONE_MONTH
+  ) {
     currentCache = {
       startTime: Math.round(Date.now() / 1000),
-    }
-    await sdk.cache.writeCache(INTERNAL_CACHE_FILE, currentCache)
+    };
+    await sdk.cache.writeCache(INTERNAL_CACHE_FILE, currentCache);
   }
-  sdk.sdkCache.startCache(currentCache)
+  sdk.sdkCache.startCache(currentCache);
 }
 
 async function saveSdkInternalCache() {
-  await sdk.cache.writeCache(INTERNAL_CACHE_FILE, sdk.sdkCache.retriveCache())
+  await sdk.cache.writeCache(INTERNAL_CACHE_FILE, sdk.sdkCache.retriveCache());
 }

@@ -7,7 +7,6 @@ const chainContracts = {
   },
 };
 
-
 import { addChainExports } from "../helper/getSupply";
 const adapter = addChainExports(chainContracts);
 export default adapter;

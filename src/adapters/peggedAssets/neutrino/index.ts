@@ -4,11 +4,11 @@ import { bridgedSupply } from "../helper/getSupply";
 import {
   ChainBlocks,
   PeggedIssuanceAdapter,
-  Balances, ChainContracts,
+  Balances,
+  ChainContracts,
 } from "../peggedAsset.type";
 const axios = require("axios");
 const retry = require("async-retry");
-
 
 const chainContracts: ChainContracts = {
   ethereum: {
@@ -27,8 +27,16 @@ function wavesMinted() {
   // Their API gives the amount circulating as ~860M. Using their API for now.
   return async function () {
     let balances = {} as Balances;
-    const { data } = await axios("https://nodes.wavesnodes.com/assets/details/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p")
-    sumSingleBalance(balances, "peggedUSD", data.quantity/ 10 ** data.decimals, "issued", false);
+    const { data } = await axios(
+      "https://nodes.wavesnodes.com/assets/details/DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p"
+    );
+    sumSingleBalance(
+      balances,
+      "peggedUSD",
+      data.quantity / 10 ** data.decimals,
+      "issued",
+      false
+    );
     return balances;
   };
 }

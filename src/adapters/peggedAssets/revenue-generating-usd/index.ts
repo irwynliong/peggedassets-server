@@ -8,7 +8,7 @@ const chainContracts = {
   arbitrum: {
     bridgedFromETH: ["0x96a993f06951b01430523d0d5590192d650ebf3e"],
   },
-}
+};
 
 import { addChainExports } from "../helper/getSupply";
 const adapter = addChainExports(chainContracts);
